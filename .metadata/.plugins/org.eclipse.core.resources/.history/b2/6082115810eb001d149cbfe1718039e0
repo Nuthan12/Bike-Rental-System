@@ -1,0 +1,59 @@
+package com.bikeRentalSystem.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.bikeRentalSystem.beans.Customer;
+import com.bikeRentalSystem.dao.Customer_Dao;
+
+@Controller
+public class RegistrationController {
+	
+	
+	@Autowired
+	private Customer_Dao cust_Dao;
+	
+	@GetMapping("/customer_registration_form")
+	public String showForm(Model m) {
+		m.addAttribute("command", new Customer());
+		return "customer_registration_form";
+	}
+	
+	@RequestMapping(value="/save",method=RequestMethod.POST)
+	public String save(@ModelAttribute("customer") Customer customer) {
+		cust_Dao.save(customer);
+		return "redirect:/veiwCustomer";
+	}
+	
+	@RequestMapping("/veiwCustomer")
+	public String veiwCustomer(Model m) {
+		 List<Customer> list=cust_Dao.getCustomers();    
+	     m.addAttribute("list",list);  
+	     return "viewCustomer";
+	}
+	
+	@RequestMapping(value="editCustomer/{Cust_Id}")
+	public String editCustomer(@PathVariable int Cust_Id,Model m) {
+		Customer customer=cust_Dao.getCustomerById(Cust_Id);
+		m.addAttribute("command", customer);
+		return "customerEditForm";
+	}
+	
+	@RequestMapping(value="/editsave",method = RequestMethod.POST)
+	public String editsave(@ModelAttribute("customer")Customer customer) {
+		cust_Dao.update(customer);
+		return "redirect:/veiwCustomer";
+	}
+	@RequestMapping(value="/deleteCustomer{Cust_Id}",method=RequestMethod.POST)
+	public String delete(@PathVariable int Cust_Id) {
+		cust_Dao.delete(Cust_Id);
+		return "redirect:/veiwCustomer";
+	}
+}

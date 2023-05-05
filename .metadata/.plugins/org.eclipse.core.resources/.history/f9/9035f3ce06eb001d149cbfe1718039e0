@@ -1,0 +1,24 @@
+package com.bikeRentalSystem.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.bikeRentalSystem.beans.Customer;
+import com.bikeRentalSystem.dao.Customer_Dao;
+
+@Controller
+public class RegistrationController {
+	
+	
+	@Autowired
+	private Customer_Dao cust_Dao;
+	
+	@RequestMapping("/customer_registration_form")
+	public String showForm(Model m) {
+		m.addAttribute("command", new Customer());
+		return "customer_registration_form";
+	}
+	
+}

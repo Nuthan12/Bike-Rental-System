@@ -1,0 +1,15 @@
+package com.bikeRentalSystem.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.bikeRentalSystem.dao.Customer_Dao;
+
+@Controller
+public class RegistrationController {
+	
+	
+	@Autowired
+	private Customer_Dao cust_Dao;
+	
+}

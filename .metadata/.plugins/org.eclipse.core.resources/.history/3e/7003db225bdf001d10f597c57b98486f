@@ -1,0 +1,16 @@
+package oops;
+
+public class Cks extends WaterBottle {
+	public static void swap(Integer a ,Integer b) {
+		Integer temp=a;
+		a=b;
+		b=temp;
+		System.out.println(a);
+		System.out.println(b);
+	}
+	
+	public static void main(String[] args) {
+		swap(10, 20);
+	}
+	
+}

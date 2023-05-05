@@ -1,0 +1,12 @@
+package com.bikeRentalSystem.beans;
+
+public class Customer {
+	
+	
+	private int Cust_Id;
+	private String Cust_Name;
+	private String Cust_Mail;
+	private Long Cust_Phone;
+	private String DL_Number;
+	private int Age;
+}

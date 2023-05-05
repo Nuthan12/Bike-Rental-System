@@ -1,0 +1,71 @@
+package com.bikeRentalSystem.beans;
+
+public class Customer {
+	
+	
+	private int cust_Id;
+	private String ust_Name;
+	private String Cust_Mail;
+	private Long Cust_Phone;
+	private String DL_Number;
+	private int Age;
+	public int getCust_Id() {
+		return cust_Id;
+	}
+	public void setCust_Id(int cust_Id) {
+		cust_Id = cust_Id;
+	}
+	public String getCust_Name() {
+		return Cust_Name;
+	}
+	public void setCust_Name(String cust_Name) {
+		Cust_Name = cust_Name;
+	}
+	public String getCust_Mail() {
+		return Cust_Mail;
+	}
+	public void setCust_Mail(String cust_Mail) {
+		Cust_Mail = cust_Mail;
+	}
+	public Long getCust_Phone() {
+		return Cust_Phone;
+	}
+	public void setCust_Phone(Long cust_Phone) {
+		Cust_Phone = cust_Phone;
+	}
+	public String getDL_Number() {
+		return DL_Number;
+	}
+	public void setDL_Number(String dL_Number) {
+		DL_Number = dL_Number;
+	}
+	public int getAge() {
+		return Age;
+	}
+	public void setAge(int age) {
+		Age = age;
+	}
+	public Customer(String cust_Name, String cust_Mail, Long cust_Phone, String dL_Number, int age) {
+		super();
+		Cust_Name = cust_Name;
+		Cust_Mail = cust_Mail;
+		Cust_Phone = cust_Phone;
+		DL_Number = dL_Number;
+		Age = age;
+	}
+	public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Customer(int cust_Id, String cust_Name, String cust_Mail, Long cust_Phone, String dL_Number, int age) {
+		super();
+		cust_Id = cust_Id;
+		Cust_Name = cust_Name;
+		Cust_Mail = cust_Mail;
+		Cust_Phone = cust_Phone;
+		DL_Number = dL_Number;
+		Age = age;
+	}
+	
+	
+}

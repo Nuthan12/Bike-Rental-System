@@ -1,0 +1,51 @@
+package com.bikeRentalSystem.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
+import com.bikeRentalSystem.beans.Customer;
+
+public class Customer_Dao {
+	private JdbcTemplate jdbcTemplate;
+
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public int save(Customer c){    
+	    String sql="insert into Customer_Details(Cust_Name,Cust_Mail,Cust_Phone,DL_Number,Age) values('"+c.getCust_Name()+"','"+c.getCust_Mail()+"',"+c.getCust_Phone()+",'"+c.getDL_Number()+"','"+c.getAge()+"')";    
+	    return jdbcTemplate.update(sql);    
+	}    
+	public int update(Customer c){    
+	    String sql="update Customer_Details set Cust_Name='"+c.getCust_Name()+"', Cust_Mail="+c.getCust_Mail()+", Cust_Phone="+c.getCust_Phone()+", DL_Number="+c.getDL_Number()+",Age='"+c.getAge()+"' where Cust_Id="+c.getCust_Id()+"";    
+	    return jdbcTemplate.update(sql);    
+	}    
+	public int delete(int Cust_Id){    
+	    String sql="delete from Customer_Details where Cust_Id="+Cust_Id+"";    
+	    return jdbcTemplate.update(sql);    
+	}    
+	public Customer getCustomerById(int id){    
+	    String sql="select * from Customer_Details where Cust_Id=?";    
+	    return jdbcTemplate.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<Customer>(Customer.class));    
+	}	
+	
+	public List<Customer> getCustomers()
+	{
+		return jdbcTemplate.query("select * from Customer_Details",new RowMapper<Customer>(){    
+	        public Customer mapRow(ResultSet rs, int row) throws SQLException {    
+	            Customer c=new Customer();    
+	            c.setCust_Id(rs.getInt(1));    
+	            c.setCust_Name(rs.getString(2));    
+	            c.setCust_Mail(rs.getString(3));    
+	            c.setDesignation(rs.getString(4));    
+	            return c;    
+	        }    
+		});
+	}
+}

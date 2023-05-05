@@ -1,0 +1,32 @@
+package com.bikeRentalSystem.dao;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.bikeRentalSystem.beans.Customer;
+
+public class Customer_Dao {
+	private JdbcTemplate jdbcTemplate;
+
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public int save(Customer c){    
+	    String sql="insert into Emp99(name,salary,designation) values('"+p.getName()+"',"+p.getSalary()+",'"+p.getDesignation()+"')";    
+	    return jdbcTemplate.update(sql);    
+	}    
+	public int update(Customer c){    
+	    String sql="update Emp99 set name='"+p.getName()+"', salary="+p.getSalary()+",designation='"+p.getDesignation()+"' where id="+p.getId()+"";    
+	    return jdbcTemplate.update(sql);    
+	}    
+	public int delete(int Cust_Id){    
+	    String sql="delete from Customer_Details where id="+Cust_Id+"";    
+	    return jdbcTemplate.update(sql);    
+	}    
+	public Customer getCustomerById(int id){    
+	    String sql="select * from Emp99 where id=?";    
+	    return jdbcTemplate.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<Emp>(Emp.class));    
+	}	
+	
+}

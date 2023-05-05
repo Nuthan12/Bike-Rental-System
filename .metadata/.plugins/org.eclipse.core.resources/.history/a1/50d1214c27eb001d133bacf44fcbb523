@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title>
+		Bike Rental System
+	</title>
+</head>
+<body>
+<center>
+	<h2>Bike Rental System</h2>
+
+
+<a href="customerRegistrationForm">Register Customer</a>  
+<a href="viewCustomers">View Employees</a> 
+</center>
+</body>
+</html>

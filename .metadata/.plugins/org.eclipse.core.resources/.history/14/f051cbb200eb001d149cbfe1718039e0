@@ -1,0 +1,5 @@
+package com.bikeRentalSystem.bean;
+
+public class Customer {
+	
+}

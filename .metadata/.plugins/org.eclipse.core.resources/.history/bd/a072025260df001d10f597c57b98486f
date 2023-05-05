@@ -1,0 +1,22 @@
+package oops;
+
+public class Cks extends WaterBottle	 {
+	public static String sal() {
+		return "Archith";
+	}
+	
+	
+	public static int date() {
+		return 1;
+	}
+	
+	public static void disp() {
+		sal();
+		date();
+		
+	}
+	public static void main(String[] args) {
+		disp();
+	}
+	
+}

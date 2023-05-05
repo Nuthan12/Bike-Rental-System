@@ -1,0 +1,5 @@
+package com.bikeRentalSystem.controllers;
+
+public class RegistrationController {
+
+}
