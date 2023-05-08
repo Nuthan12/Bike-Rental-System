@@ -7,7 +7,7 @@
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous">
 	</link>
-<h1>Employees List</h1>
+<h1>Customers List</h1>
 <table border="2" width="70%" cellpadding="2" class="table table-dark table-striped">
 	<tr>
 		<th>Customer Id</th>
@@ -16,23 +16,24 @@
 		<th>Customer Phone</th>
 		<th>Driving License Number</th>
 		<th>Age</th>
+		<th>Password</th>
 		<th>Edit</th>
 		<th>Delete</th>
 		
 	</tr>
 	<c:forEach var="c" items="${list}">
 		<tr>
-			<td>${c.cust_Id}</td>
-			<td>${c.cust_Name}</td>
-			<td>${c.cust_Mail}</td>
-			<td>${c.cust_Phone}</td>
-			<td>${c.dl_Number}</td>
+			<td>${c.custId}</td>
+			<td>${c.custName}</td>
+			<td>${c.custMail}</td>
+			<td>${c.custPhone}</td>
+			<td>${c.dlNumber}</td>
 			<td>${c.age}</td>
-			<td><a href="editCustomer/${c.cust_Id}">Edit</a></td>
+			<td>${c.password}</td>
+			<td><a href="editCustomer/${c.custId}">Edit</a></td>
 			
-			<td><a href="deleteCustomer/${c.cust_Id}">Delete</a></td>
+			<td><a href="deleteCustomer/${c.custId}">Delete</a></td>
 		</tr>
 	</c:forEach>
 </table>
 <br />
-<!-- <a href="empform">Add New Employee</a>  -->

@@ -3,41 +3,50 @@ package com.bikeRentalSystem.beans;
 public class Customer {
 	
 	
-	private int cust_Id;
-	private String cust_Name;
-	private String cust_Mail;
-	private Long cust_Phone;
-	private String dl_Number;
+	private int custId;
+	private String custName;
+	private String custMail;
+	private Long custPhone;
+	private String dlNumber;
 	private int age;
-	public int getCust_Id() {
-		return cust_Id;
+	private String password;
+	private String confirmPassword;
+	private String authorities;
+	public String getAuthorities() {
+		return authorities;
 	}
-	public void setCust_Id(int cust_Id) {
-		this.cust_Id = cust_Id;
+	public void setAuthorities(String authorities) {
+		this.authorities = authorities;
 	}
-	public String getCust_Name() {
-		return cust_Name;
+	public int getCustId() {
+		return custId;
 	}
-	public void setCust_Name(String cust_Name) {
-		this.cust_Name = cust_Name;
+	public void setCustId(int custId) {
+		this.custId = custId;
 	}
-	public String getCust_Mail() {
-		return cust_Mail;
+	public String getCustName() {
+		return custName;
 	}
-	public void setCust_Mail(String cust_Mail) {
-		this.cust_Mail = cust_Mail;
+	public void setCustName(String custName) {
+		this.custName = custName;
 	}
-	public Long getCust_Phone() {
-		return cust_Phone;
+	public String getCustMail() {
+		return custMail;
 	}
-	public void setCust_Phone(Long cust_Phone) {
-		this.cust_Phone = cust_Phone;
+	public void setCustMail(String custMail) {
+		this.custMail = custMail;
 	}
-	public String getDl_Number() {
-		return dl_Number;
+	public Long getCustPhone() {
+		return custPhone;
 	}
-	public void setDl_Number(String dl_Number) {
-		this.dl_Number = dl_Number;
+	public void setCustPhone(Long custPhone) {
+		this.custPhone = custPhone;
+	}
+	public String getDlNumber() {
+		return dlNumber;
+	}
+	public void setDlNumber(String dlNumber) {
+		this.dlNumber = dlNumber;
 	}
 	public int getAge() {
 		return age;
@@ -45,27 +54,45 @@ public class Customer {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public Customer(String cust_Name, String cust_Mail, Long cust_Phone, String dL_Number, int age) {
-		super();
-		this.cust_Name = cust_Name;
-		this.cust_Mail = cust_Mail;
-		this.cust_Phone = cust_Phone;
-		dl_Number = dL_Number;
-		this.age = age;
+	public String getPassword() {
+		return password;
 	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Customer(int cust_Id, String cust_Name, String cust_Mail, Long cust_Phone, String dl_Number, int age) {
+	public Customer(int custId, String custName, String custMail, Long custPhone, String dlNumber, int age,
+			String password, String authorities) {
 		super();
-		this.cust_Id = cust_Id;
-		this.cust_Name = cust_Name;
-		this.cust_Mail = cust_Mail;
-		this.cust_Phone = cust_Phone;
-		this.dl_Number = dl_Number;
+		this.custId = custId;
+		this.custName = custName;
+		this.custMail = custMail;
+		this.custPhone = custPhone;
+		this.dlNumber = dlNumber;
 		this.age = age;
+		this.password = password;
+		this.authorities = authorities;
 	}
+	public Customer(String custName, String custMail, Long custPhone, String dlNumber, int age, String password,
+			 String authorities) {
+		super();
+		this.custName = custName;
+		this.custMail = custMail;
+		this.custPhone = custPhone;
+		this.dlNumber = dlNumber;
+		this.age = age;
+		this.password = password;
+		this.authorities = authorities;
+	}
+	
+	
 	
 	
 }

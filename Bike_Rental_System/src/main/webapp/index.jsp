@@ -10,7 +10,8 @@
 
 
 <button><a href="customerRegistrationForm">Register Customer</a>  </button>
-<button><a href="viewCustomers">View Customers</a> </button>
+<button><a href="veiwCustomers">View Customers</a> </button>
+<button><a href="login">Login</a> </button>
 </center>
 </body>
 </html>

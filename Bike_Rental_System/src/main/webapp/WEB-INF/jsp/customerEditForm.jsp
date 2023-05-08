@@ -20,28 +20,33 @@
 		<table class="table table-light table-striped">
 			<tr>
 				<td></td>
-				<td><form:hidden path="cust_Id" /></td>
+				<td><form:hidden path="custId" /></td>
 			</tr>
 			<tr>
 				<td>Name :</td>
-				<td><form:input path="cust_Name" /></td>
+				<td><form:input path="custName" /></td>
 			</tr>
 			<tr>
 				<td>Mail :</td>
-				<td><form:input path="cust_Mail" /></td>
+				<td><form:input path="custMail" /></td>
 			</tr>
 			<tr>
 				<td>Phone :</td>
-				<td><form:input path="cust_Phone" /></td>
+				<td><form:input path="custPhone" /></td>
 			</tr>
 			<tr>
 				<td>Driving License Number :</td>
-				<td><form:input path="dl_Number" /></td>
+				<td><form:input path="dlNumber" /></td>
 			</tr>
 			<tr>
 				<td>Age :</td>
 				<td><form:input path="age" /></td>
 			</tr>
+			<tr>
+				<td>Password :</td>
+				<td><form:input path="password" /></td>
+			</tr>
+			
 
 			<tr>
 				<td></td>

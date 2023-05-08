@@ -7,11 +7,15 @@ import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.bikeRentalSystem.beans.Customer;
 
 public class CustomerDao {
 	private JdbcTemplate jdbcTemplate;
+	
+	private static String USER_AUTHORITY = "user";
 
 
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -19,35 +23,55 @@ public class CustomerDao {
 	}
 	
 	public int save(Customer c){    
-	    String sql="insert into Customer_Details(cust_Name,cust_Mail,cust_Phone,dl_Number,age) values('"+c.getCust_Name()+"','"+c.getCust_Mail()+"',"+c.getCust_Phone()+",'"+c.getDl_Number()+"','"+c.getAge()+"')";    
+	    String sql="insert into CustomerDetails(custName,custMail,custPhone,dlNumber,age,password,authorities) values('"+c.getCustName()+"','"+c.getCustMail()+"',"+c.getCustPhone()+",'"+c.getDlNumber()+"','"+c.getAge()+"','"+c.getPassword()+"','"+USER_AUTHORITY+"')";    
 	    return jdbcTemplate.update(sql);    
 	}    
-	public int update(Customer c){    
-		String sql="update Customer_Details set cust_Name='"+c.getCust_Name()+"', cust_Mail='"+c.getCust_Mail()+"', cust_Phone='"+c.getCust_Phone()+"', dl_Number='"+c.getDl_Number()+"',age='"+c.getAge()+"' where cust_Id="+c.getCust_Id()+"";    
-	    return jdbcTemplate.update(sql);   
+	public int update(Customer c){ 
+		if(c.getPassword()==c.getConfirmPassword()) {
+			String sql="update CustomerDetails set custName='"+c.getCustName()+"', custMail='"+c.getCustMail()+"', custPhone='"+c.getCustPhone()+"', dlNumber='"+c.getDlNumber()+"',age='"+c.getAge()+"',password='"+c.getPassword()+"',authorities='"+USER_AUTHORITY+"' where cust_Id="+c.getCustId()+"";    
+		    return jdbcTemplate.update(sql); 
+		}
+		else {
+			return 0;
+		}
+		  
 	}    
-	public int delete(int cust_Id){    
-	    String sql="delete from Customer_Details where cust_Id="+cust_Id+"";    
+	public int delete(int custId){    
+	    String sql="delete from CustomerDetails where custId="+custId+"";    
 	    return jdbcTemplate.update(sql);    
 	}    
-	public Customer getCustomerById(int cust_Id){    
-	    String sql="select * from Customer_Details where cust_Id=?";    
-	    return jdbcTemplate.queryForObject(sql, new Object[]{cust_Id},new BeanPropertyRowMapper<Customer>(Customer.class));    
+	public Customer getCustomerById(int custId){    
+	    String sql="select * from CustomerDetails where custId=?";    
+	    return jdbcTemplate.queryForObject(sql, new Object[]{custId},new BeanPropertyRowMapper<Customer>(Customer.class));    
 	}	
+	
+	public boolean checkPasswords(String password,String confirmPassword) {
+		if(password==confirmPassword) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	
 	public List<Customer> getCustomers()
 	{
-		return jdbcTemplate.query("select * from Customer_Details",new RowMapper<Customer>(){    
+		return jdbcTemplate.query("select * from CustomerDetails",new RowMapper<Customer>(){    
 	        public Customer mapRow(ResultSet rs, int row) throws SQLException {    
 	            Customer c=new Customer();    
-	            c.setCust_Id(rs.getInt(1));    
-	            c.setCust_Name(rs.getString(2));    
-	            c.setCust_Mail(rs.getString(3));    
-	            c.setCust_Phone(rs.getLong(4));
-	            c.setDl_Number(rs.getString(5));
+	            c.setCustId(rs.getInt(1));    
+	            c.setCustName(rs.getString(2));    
+	            c.setCustMail(rs.getString(3));    
+	            c.setCustPhone(rs.getLong(4));
+	            c.setDlNumber(rs.getString(5));
 	            c.setAge(rs.getInt(6));
+	            c.setPassword(rs.getString(7));
+	            c.setAuthorities(rs.getString(8));
 	            return c;    
 	        }    
 		});
 	}
+	
+	
+	
 }
