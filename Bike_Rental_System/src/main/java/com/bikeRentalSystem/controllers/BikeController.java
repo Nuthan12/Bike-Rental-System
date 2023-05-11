@@ -1,6 +1,5 @@
 package com.bikeRentalSystem.controllers;
 
-import java.lang.System.Logger;
 import java.util.List;
 
 import javax.net.ssl.SSLException;
@@ -66,4 +65,19 @@ public class BikeController {
 		bikeDetailsDao.deleteBike(bikeId);
 		return "redirect:/veiwBikes";
 	}
+	
+	@RequestMapping(value="/availableBikes",method=RequestMethod.GET)
+	public String availableBikes(Model m) throws SSLException{
+		try {
+		 List<Bike> list=bikeDetailsDao.getBikes();    
+		
+	     m.addAttribute("list",list);  
+	     return "availableBikes";
+	     }
+		catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
+	
 }

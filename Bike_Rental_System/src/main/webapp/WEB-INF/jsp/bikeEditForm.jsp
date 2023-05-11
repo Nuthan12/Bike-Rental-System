@@ -75,6 +75,12 @@ body {
 				<td><form:input path="bikeImage" type="file" /></td>
 			</tr>
 			<tr>
+				<td>Is isAvailable:</td>
+				<td>
+						<form:checkbox path="isAvailable" />
+				</td>
+			</tr>
+			<tr>
 				<td></td>
 				<td><input type="submit" value="Save Details" /></td>
 			</tr>

@@ -9,7 +9,14 @@ public class Bike {
 	private byte[] bikeImage;
 	private int branchId;
 	private double price;
+	private boolean isAvailable;
 	
+	public boolean isAvailable() {
+		return isAvailable;
+	}
+	public void setAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
+	}
 	public int getBranchId() {
 		return branchId;
 	}
@@ -62,7 +69,7 @@ public class Bike {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Bike(String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,int branchId) {
+	public Bike(String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,int branchId,boolean isAvailable) {
 		super();
 		this.bikeName = bikeName;
 		this.model = model;
@@ -70,8 +77,9 @@ public class Bike {
 		this.bikeImage = bikeImage;
 		this.price = price;
 		this.branchId=branchId;
+		this.isAvailable=isAvailable;
 	}
-	public Bike(int bikeId, String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,String imageData,int branchId) {
+	public Bike(int bikeId, String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,String imageData,int branchId,boolean isAvailable) {
 		super();
 		this.bikeId = bikeId;
 		this.bikeName = bikeName;
@@ -80,8 +88,9 @@ public class Bike {
 		this.bikeImage = bikeImage;
 		this.price = price;
 		this.branchId=branchId;
+		this.isAvailable=isAvailable;
 	}
-	public Bike(int bikeId, String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,int branchId) {
+	public Bike(int bikeId, String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,int branchId,boolean isAvailable) {
 		super();
 		this.bikeId = bikeId;
 		this.bikeName = bikeName;
@@ -90,6 +99,7 @@ public class Bike {
 		this.bikeImage = bikeImage;
 		this.price = price;
 		this.branchId=branchId;
+		this.isAvailable=isAvailable;
 	}
 	
 	

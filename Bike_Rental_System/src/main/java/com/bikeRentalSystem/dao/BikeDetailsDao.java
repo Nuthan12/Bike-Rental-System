@@ -25,16 +25,16 @@ public class BikeDetailsDao {
 
 	public int saveBike(Bike b) {
 
-		String sql = "insert into BikeDetails(bikeName,model,manufacturedYear,bikeImage,price,branchId) values('"
+		String sql = "insert into BikeDetails(bikeName,model,manufacturedYear,bikeImage,price,branchId,isAvailable) values('"
 				+ b.getBikeName() + "','" + b.getModel() + "','" + b.getManufacturedYear() + "','" + b.getBikeImage()
-				+ "','" + b.getPrice() + "','" + b.getBranchId() + "')";
+				+ "','" + b.getPrice() + "','" + b.getBranchId() +"','" + b.isAvailable() + "')";
 		return jdbcTemplate.update(sql);
 	}
 
 	public int updateBike(Bike b) {
 		String sql = "update BikeDetails set bikeName='" + b.getBikeName() + "', model='" + b.getModel()
 				+ "', manufacturedYear='" + b.getManufacturedYear() + "',bikeImage='" + b.getBikeImage() + "',price='"
-				+ b.getPrice() + "',branchId='" + b.getBranchId() + "' where bikeId=" + b.getBikeId() + "";
+				+ b.getPrice() + "',branchId='" + b.getBranchId() + "',isAvailable='" + b.isAvailable() + "' where bikeId=" + b.getBikeId() + "";
 		return jdbcTemplate.update(sql);
 	}
 
@@ -60,6 +60,7 @@ public class BikeDetailsDao {
 				b.setBikeImage(rs.getBytes(5));
 				b.setPrice(rs.getDouble(6));
 				b.setBranchId(rs.getInt(7));
+				b.setAvailable(rs.getBoolean(8));
 				return b;
 			}
 		});
@@ -81,6 +82,7 @@ public class BikeDetailsDao {
 				b.setBikeImage(rs.getBytes(5));
 				b.setPrice(rs.getDouble(6));
 				b.setBranchId(rs.getInt(7));
+				b.setAvailable(rs.getBoolean(8));
 				return b;
 			}
 		});

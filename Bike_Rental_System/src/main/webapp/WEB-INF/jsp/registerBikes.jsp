@@ -84,6 +84,11 @@ form input[type="submit"] {
 			<tr>
 				<td>Branch :</td>
 				<td><form:input path="branchId"/></td>
+			</tr><tr>
+				<td>Availability :</td>
+				<td>
+					<form:checkbox path="isAvailable" />
+				</td>
 			</tr>
 			
 			<tr>

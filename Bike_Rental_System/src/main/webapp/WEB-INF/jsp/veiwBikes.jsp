@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>View Bikes</title>
 </head>
 <body>
 	<h1>Bikes List</h1>
@@ -25,6 +25,7 @@
 			<th>Bike Model</th>
 			<th>Manufactured Year</th>
 			<th>Bike Image</th>
+			<th>Availability</th>
 			<th>Edit</th>
 			<th>Delete</th>
 
@@ -37,6 +38,7 @@
 				<td>${c.manufacturedYear}</td>
 				<%-- <td type="image">${c.bikeImage}</td> --%>
 				<td><img width="25" height="30" src="data:image/png;base64,${c.bikeImage}"></td>
+				<td>${c.isAvailable}</td>
 				<td><a href="editBike/${c.bikeId}">Edit</a></td>
 
 				<td><a href="deleteBike/${c.bikeId}">Delete</a></td>
