@@ -1,8 +1,11 @@
 package com.bikeRentalSystem.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,9 +29,9 @@ public class MainController {
 		return "customerRegistrationForm";
 	}
 	
-	@RequestMapping(value="/loginPage")
-	public String  showLoginPage(Model m) {
-		m.addAttribute(m);
+	@RequestMapping(value="/loginPage", method=RequestMethod.GET)
+	public String  showLoginPage(ModelMap m) {
+		m.addAttribute("customer",new Customer());
 		return "loginPage";
 	}
 	
@@ -38,24 +41,39 @@ public class MainController {
 		return "customerHome";
 	}
 	
+//	@RequestMapping(value="/adminHome")
+//	public String  showAdminHome(Model m) {
+//		m.addAttribute(m);
+//		return "adminHome";
+//	}
+	
 	@RequestMapping(value = "/loginPage", method = RequestMethod.POST)
-	public ModelAndView loginUser(@Validated @ModelAttribute("customer") Customer customer, BindingResult result) {
-	    ModelAndView modelAndView = new ModelAndView();
-
-	    if (result.hasErrors()) {
-	        modelAndView.setViewName("loginPage");
-	    } else {
-	        // perform authentication and redirect to home page
-	        modelAndView.setViewName("redirect:/index");
-	    }
-
-	    return modelAndView;
+	public String loginUser(@Validated @ModelAttribute("customer") Customer customer, 
+			BindingResult result,
+			ModelMap m,
+			HttpSession httpSession) {
+		String customerMail=customer.getCustMail();
+		String custPassword=customer.getPassword();
+		
+		System.out.printf(customerMail,custPassword);
+		Customer cust=customerDao.getCustomerByMailAndPassword(customerMail, custPassword);
+		if(cust!=null) {
+			httpSession.setAttribute("customer", cust);
+			if(cust.getAuthorities().equals("user")) {
+				return "customerHome";
+			}
+			else if(cust.getAuthorities().equals("admin")) {
+				return "adminHome";
+			}
+			else {
+				m.addAttribute("error", "Invalid Email or Password");
+				return "loginPage";
+			}
+		}
+		return null;
+	   
 	}
 	
-	@RequestMapping("/registerBikes")
-	public String showBikeForm(Model m) {
-		m.addAttribute("command", new Bike());
-		return "registerBikes";
-	}
+	
 	
 }

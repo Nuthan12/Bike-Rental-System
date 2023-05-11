@@ -77,11 +77,18 @@ form input[type="submit"] {
 				<td>Image :</td>
 				<td><form:input path="bikeImage" type="file"/></td>
 			</tr>
+			<tr>
+				<td>Price :</td>
+				<td><form:input path="price"/></td>
+			</tr>
+			<tr>
+				<td>Branch :</td>
+				<td><form:input path="branchId"/></td>
+			</tr>
 			
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Save"
-					onclick="return " /></td>
+				<td><input type="submit" value="Save"/></td>
 			</tr>
 		</table>
 	</form:form>

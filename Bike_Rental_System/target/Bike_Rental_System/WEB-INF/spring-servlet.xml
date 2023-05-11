@@ -23,7 +23,7 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver"></property>
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/bike_rental_system?serverTimezone=UTC" />
+			value="jdbc:mysql://localhost:3306/bike_rental_system?useSSL=true" />
 		<property name="username" value="root"></property>
 		<property name="password" value="root"></property>
 	</bean>
@@ -35,6 +35,9 @@
 	</bean>
 	
 	<bean id="bikeDetailsDao" class="com.bikeRentalSystem.dao.BikeDetailsDao">
+		<property name="jdbcTemplate" ref="jt"></property>
+	</bean>
+	<bean id="branchDetailsDao" class="com.bikeRentalSystem.dao.BranchDetailsDao">
 		<property name="jdbcTemplate" ref="jt"></property>
 	</bean>
 	

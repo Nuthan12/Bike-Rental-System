@@ -1,6 +1,9 @@
 package com.bikeRentalSystem.controllers;
 
+import java.lang.System.Logger;
 import java.util.List;
+
+import javax.net.ssl.SSLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bikeRentalSystem.beans.Bike;
-import com.bikeRentalSystem.beans.Customer;
 import com.bikeRentalSystem.dao.BikeDetailsDao;
-import com.bikeRentalSystem.service.BikeDetailsServiceImpl;
 
 @Controller
 public class BikeController {
@@ -22,6 +23,12 @@ public class BikeController {
 	@Autowired
 	private BikeDetailsDao bikeDetailsDao;
 	
+	@RequestMapping("/registerBikes")
+	public String showBikeForm(Model m) {
+		m.addAttribute("command", new Bike());
+		return "registerBikes";
+	}
+	
 	@RequestMapping(value="/saveBike",method=RequestMethod.POST)
 	public String saveBike(@ModelAttribute("bike") Bike bike) {
 			bikeDetailsDao.saveBike(bike);
@@ -29,10 +36,17 @@ public class BikeController {
 	}
 	
 	@RequestMapping(value="/veiwBikes",method=RequestMethod.GET)
-	public String veiwBike(Model m) {
+	public String veiwBike(Model m) throws SSLException{
+		try {
 		 List<Bike> list=bikeDetailsDao.getBikes();    
+		
 	     m.addAttribute("list",list);  
 	     return "veiwBikes";
+	     }
+		catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
 	}
 	
 	@RequestMapping(value="editBike/{bikeId}")

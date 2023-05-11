@@ -46,18 +46,18 @@
 </style>
 </head>
 <body>
- <%--   <form method="post" action="LoginServlet">
-  <label for="username">Customer Mail:</label>
+   <form method="post" action="loginPage">
+  <label for="custMail">Customer Mail:</label>
   <input type="text" id="username" name="custMail" required>
   <br>
   <label for="password">Password:</label>
   <input type="password" id="password" name="password" required>
   <br>
   <input type="submit" value="Login">
-</form> --%>
-
+</form>
+<!-- <div>
 <button onclick="window.location.href='adminHome'">Admin</button>
 <button onclick="window.location.href='customerHome'">Customer</button>
-
+</div> -->
 </body>
 </html>

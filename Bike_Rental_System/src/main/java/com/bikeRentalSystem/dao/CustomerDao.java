@@ -7,8 +7,6 @@ import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.bikeRentalSystem.beans.Customer;
 
@@ -48,6 +46,12 @@ public class CustomerDao {
 	public Customer getCustomerByName(String custName) {
 		String sql="select * from CustomerDetails where custName=?";
 		return jdbcTemplate.queryForObject(sql, new Object[] {custName}, new BeanPropertyRowMapper<Customer>(Customer.class));
+	}
+	
+	public Customer getCustomerByMailAndPassword(String custMail,String password) {
+		String sql="select * from CustomerDetails where custMail=? AND password=?";
+		RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<Customer>(Customer.class);
+        return jdbcTemplate.queryForObject(sql, rowMapper, custMail,password);
 	}
 	
 	public boolean checkPasswords(String password,String confirmPassword) {

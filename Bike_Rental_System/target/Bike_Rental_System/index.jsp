@@ -44,6 +44,9 @@ body {
 <body>
 	<div class="container">
 		<h2>Bike Rental System</h2>
+		<div>
+		
+		</div>
 	<button onclick="window.location.href='customerRegistrationForm'">Register Customer</button>
 
 		

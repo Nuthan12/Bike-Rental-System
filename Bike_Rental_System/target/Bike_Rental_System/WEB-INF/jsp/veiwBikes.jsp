@@ -25,8 +25,6 @@
 			<th>Bike Model</th>
 			<th>Manufactured Year</th>
 			<th>Bike Image</th>
-
-
 			<th>Edit</th>
 			<th>Delete</th>
 
