@@ -28,7 +28,7 @@ public class CustomerDao {
 	}    
 	public int update(Customer c){ 
 		if(c.getPassword()==c.getConfirmPassword()) {
-			String sql="update CustomerDetails set custName='"+c.getCustName()+"', custMail='"+c.getCustMail()+"', custPhone='"+c.getCustPhone()+"', dlNumber='"+c.getDlNumber()+"',age='"+c.getAge()+"',password='"+c.getPassword()+"',authorities='"+USER_AUTHORITY+"' where cust_Id="+c.getCustId()+"";    
+			String sql="update CustomerDetails set custName='"+c.getCustName()+"', custMail='"+c.getCustMail()+"', custPhone='"+c.getCustPhone()+"', dlNumber='"+c.getDlNumber()+"',age='"+c.getAge()+"',password='"+c.getPassword()+"',authorities='"+USER_AUTHORITY+"' where custId="+c.getCustId()+"";    
 		    return jdbcTemplate.update(sql); 
 		}
 		else {
@@ -43,7 +43,12 @@ public class CustomerDao {
 	public Customer getCustomerById(int custId){    
 	    String sql="select * from CustomerDetails where custId=?";    
 	    return jdbcTemplate.queryForObject(sql, new Object[]{custId},new BeanPropertyRowMapper<Customer>(Customer.class));    
-	}	
+	}
+	
+	public Customer getCustomerByName(String custName) {
+		String sql="select * from CustomerDetails where custName=?";
+		return jdbcTemplate.queryForObject(sql, new Object[] {custName}, new BeanPropertyRowMapper<Customer>(Customer.class));
+	}
 	
 	public boolean checkPasswords(String password,String confirmPassword) {
 		if(password==confirmPassword) {
