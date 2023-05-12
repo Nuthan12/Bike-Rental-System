@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bikeRentalSystem.beans.Bike;
 import com.bikeRentalSystem.dao.BikeDetailsDao;
@@ -30,8 +31,14 @@ public class BikeController {
 	
 	@RequestMapping(value="/saveBike",method=RequestMethod.POST)
 	public String saveBike(@ModelAttribute("bike") Bike bike) {
-			bikeDetailsDao.saveBike(bike);
+		if(bike.isAvailable()==true) {	
+		bikeDetailsDao.saveBikeAvaialble(bike);
 			return "redirect:/veiwBikes";
+	}
+		else {
+			bikeDetailsDao.saveBikeNotAvaialble(bike);
+			return "redirect:/veiwBikes";
+		}
 	}
 	
 	@RequestMapping(value="/veiwBikes",method=RequestMethod.GET)
@@ -57,8 +64,16 @@ public class BikeController {
 	
 	@RequestMapping(value="/editsaveBike",method = RequestMethod.POST)
 	public String editsaveBike(@ModelAttribute("bike")Bike bike) {
-		bikeDetailsDao.updateBike(bike);
+		if(bike.isAvailable()==true) {
+		bikeDetailsDao.updateBikeAvailable(bike);
 		return "redirect:/veiwBikes";
+	}
+	else {
+		bikeDetailsDao.updateBikeNotAvailable(bike);
+		return "redirect:/veiwBikes";
+		
+	}
+		
 	}
 	@RequestMapping(value="/deleteBike/{bikeId}",method=RequestMethod.GET)
 	public String deleteBike(@PathVariable int bikeId) {

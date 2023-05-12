@@ -2,7 +2,7 @@ package com.bikeRentalSystem.beans;
 
 import java.time.LocalDateTime;
 
-public class BookingDetails {
+public class Booking {
 	
 	private int bookingId;
 	private int bikeId;
@@ -102,7 +102,7 @@ public class BookingDetails {
 	
 	
 	
-	public BookingDetails(int bikeId, String bikeName, String model, int manufacturedYear, byte[] bikeImage,
+	public Booking(int bikeId, String bikeName, String model, int manufacturedYear, byte[] bikeImage,
 			double price, int branchId, String branchName, String branchAddress, long branchPinCode,
 			LocalDateTime localDateTime, int noOfDays) {
 		super();
@@ -119,7 +119,7 @@ public class BookingDetails {
 		this.localDateTime = localDateTime;
 		this.noOfDays = noOfDays;
 	}
-	public BookingDetails(int bookingId, int bikeId, String bikeName, String model, int manufacturedYear,
+	public Booking(int bookingId, int bikeId, String bikeName, String model, int manufacturedYear,
 			byte[] bikeImage, double price, int branchId, String branchName, String branchAddress, long branchPinCode,
 			LocalDateTime localDateTime, int noOfDays) {
 		super();
@@ -137,7 +137,7 @@ public class BookingDetails {
 		this.localDateTime = localDateTime;
 		this.noOfDays = noOfDays;
 	}
-	public BookingDetails() {
+	public Booking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

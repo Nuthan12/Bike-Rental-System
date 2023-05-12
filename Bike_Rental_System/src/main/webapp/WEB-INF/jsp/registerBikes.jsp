@@ -87,7 +87,10 @@ form input[type="submit"] {
 			</tr><tr>
 				<td>Availability :</td>
 				<td>
-					<form:checkbox path="isAvailable" />
+					<%-- <form:checkbox path="available" value="true"/> --%>
+					<%-- <form:checkbox path="available" /> --%> <label
+						for="available">Available:</label> <input type="checkbox"
+						id="available" name="available">
 				</td>
 			</tr>
 			

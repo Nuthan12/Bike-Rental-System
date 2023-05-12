@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bikeRentalSystem.beans.Bike;
 
@@ -23,18 +24,39 @@ public class BikeDetailsDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public int saveBike(Bike b) {
-
-		String sql = "insert into BikeDetails(bikeName,model,manufacturedYear,bikeImage,price,branchId,isAvailable) values('"
+	public int saveBikeAvaialble(Bike b) {
+		b.setAvailable(true);
+		
+		int availableValue=b.isAvailable()?1:0;
+		String sql = "insert into BikeDetails(bikeName,model,manufacturedYear,bikeImage,price,branchId,available) values('"
 				+ b.getBikeName() + "','" + b.getModel() + "','" + b.getManufacturedYear() + "','" + b.getBikeImage()
-				+ "','" + b.getPrice() + "','" + b.getBranchId() +"','" + b.isAvailable() + "')";
+				+ "','" + b.getPrice() + "','" + b.getBranchId() +"','" + availableValue + "')";
+		return jdbcTemplate.update(sql);
+	}
+	
+	public int saveBikeNotAvaialble(Bike b) {
+		b.setAvailable(false);
+		int availableValue=b.isAvailable()?1:0;
+		String sql = "insert into BikeDetails(bikeName,model,manufacturedYear,bikeImage,price,branchId,available) values('"
+				+ b.getBikeName() + "','" + b.getModel() + "','" + b.getManufacturedYear() + "','" + b.getBikeImage()
+				+ "','" + b.getPrice() + "','" + b.getBranchId() +"','" + availableValue + "')";
 		return jdbcTemplate.update(sql);
 	}
 
-	public int updateBike(Bike b) {
+	public int updateBikeAvailable(Bike b) {
+		b.setAvailable(true);
+		int availableValue=b.isAvailable()?1:0;
 		String sql = "update BikeDetails set bikeName='" + b.getBikeName() + "', model='" + b.getModel()
 				+ "', manufacturedYear='" + b.getManufacturedYear() + "',bikeImage='" + b.getBikeImage() + "',price='"
-				+ b.getPrice() + "',branchId='" + b.getBranchId() + "',isAvailable='" + b.isAvailable() + "' where bikeId=" + b.getBikeId() + "";
+				+ b.getPrice() +  "',available='" + availableValue + "' where bikeId=" + b.getBikeId() + "";
+		return jdbcTemplate.update(sql);
+	}
+	public int updateBikeNotAvailable(Bike b) {
+		b.setAvailable(false);
+		int availableValue=b.isAvailable()?1:0;
+		String sql = "update BikeDetails set bikeName='" + b.getBikeName() + "', model='" + b.getModel()
+				+ "', manufacturedYear='" + b.getManufacturedYear() + "',bikeImage='" + b.getBikeImage() + "',price='"
+				+ b.getPrice() +  "',available='" + availableValue + "' where bikeId=" + b.getBikeId() + "";
 		return jdbcTemplate.update(sql);
 	}
 
@@ -59,8 +81,8 @@ public class BikeDetailsDao {
 				b.setManufacturedYear(rs.getInt(4));
 				b.setBikeImage(rs.getBytes(5));
 				b.setPrice(rs.getDouble(6));
-				b.setBranchId(rs.getInt(7));
-				b.setAvailable(rs.getBoolean(8));
+				b.setBranchId(rs.getInt(8));
+				b.setAvailable(rs.getBoolean(7));
 				return b;
 			}
 		});
@@ -81,8 +103,8 @@ public class BikeDetailsDao {
 				b.setManufacturedYear(rs.getInt(4));
 				b.setBikeImage(rs.getBytes(5));
 				b.setPrice(rs.getDouble(6));
-				b.setBranchId(rs.getInt(7));
-				b.setAvailable(rs.getBoolean(8));
+				b.setBranchId(rs.getInt(8));
+				b.setAvailable(rs.getBoolean(7));
 				return b;
 			}
 		});

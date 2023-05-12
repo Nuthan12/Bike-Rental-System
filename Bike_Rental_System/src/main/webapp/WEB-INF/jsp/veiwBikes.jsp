@@ -38,7 +38,7 @@
 				<td>${c.manufacturedYear}</td>
 				<%-- <td type="image">${c.bikeImage}</td> --%>
 				<td><img width="25" height="30" src="data:image/png;base64,${c.bikeImage}"></td>
-				<td>${c.isAvailable}</td>
+				<td>${c.available}</td>
 				<td><a href="editBike/${c.bikeId}">Edit</a></td>
 
 				<td><a href="deleteBike/${c.bikeId}">Delete</a></td>

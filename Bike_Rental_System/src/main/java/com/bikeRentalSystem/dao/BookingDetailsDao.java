@@ -2,7 +2,7 @@ package com.bikeRentalSystem.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.bikeRentalSystem.beans.BookingDetails;
+import com.bikeRentalSystem.beans.Booking;
 
 public class BookingDetailsDao {
 	
@@ -17,8 +17,8 @@ public class BookingDetailsDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public int bookBike(BookingDetails b) {
-		String sql = "insert into BookingDetails(bikeName,model,manufacturedYear,bikeImage,price,branchId) values('"
+	public int bookBike(Booking b) {
+		String sql = "insert into BookingDetails(bikeId,bikeName,model,manufacturedYear,bikeImage,price,branchId,branchName,branchAddress,branchPinCode,localDateTime,noOfDays) values('"
 				+ b.getBikeName() + "','" + b.getModel() + "','" + b.getManufacturedYear() + "','" + b.getBikeImage()
 				+ "','" + b.getPrice() + "','" + b.getBranchId() + "')";
 		return jdbcTemplate.update(sql);

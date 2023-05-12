@@ -49,43 +49,45 @@ body {
 }
 </style>
 </head>
-<body >
+<body>
 	<h2 align="center">Edit Bike Details</h2>
 	<div align="center">
-	<form:form method="POST" action="/Bike_Rental_System/editsaveBike" >
-		<table class="table table-light table-striped">
-			<tr>
-				<td></td>
-				<td><form:hidden path="bikeId" /></td>
-			</tr>
-			<tr>
-				<td>Name :</td>
-				<td><form:input path="bikeName" /></td>
-			</tr>
-			<tr>
-				<td>Bike Model :</td>
-				<td><form:input path="model" /></td>
-			</tr>
-			<tr>
-				<td>Manufactured Year:</td>
-				<td><form:input path="manufacturedYear" /></td>
-			</tr>
-			<tr>
-				<td>Image :</td>
-				<td><form:input path="bikeImage" type="file" /></td>
-			</tr>
-			<tr>
-				<td>Is isAvailable:</td>
-				<td>
-						<form:checkbox path="isAvailable" />
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Save Details" /></td>
-			</tr>
-		</table>
-	</form:form>
+		<form:form method="POST" action="/Bike_Rental_System/editsaveBike">
+			<table class="table table-light table-striped">
+				<tr>
+					<td></td>
+					<td><form:hidden path="bikeId" /></td>
+				</tr>
+				<tr>
+					<td>Name :</td>
+					<td><form:input path="bikeName" /></td>
+				</tr>
+				<tr>
+					<td>Bike Model :</td>
+					<td><form:input path="model" /></td>
+				</tr>
+				<tr>
+					<td>Manufactured Year:</td>
+					<td><form:input path="manufacturedYear" /></td>
+				</tr>
+				<tr>
+					<td>Image :</td>
+					<td><form:input path="bikeImage" type="file" /></td>
+				</tr>
+				<tr>
+					<td>Is Available:</td>
+					<td>
+						<%-- <form:checkbox path="available" /> --%> <label
+						for="available">Available:</label> <input type="checkbox"
+						id="available" name="available">
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Save Details" /></td>
+				</tr>
+			</table>
+		</form:form>
 	</div>
 </body>
 </html>

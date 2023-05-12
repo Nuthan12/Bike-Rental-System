@@ -47,8 +47,8 @@ public class BranchController {
 		return "branchEditForm";
 	}
 	
-	@RequestMapping(value="/editsaveBranch",method = RequestMethod.POST)
-	public String editsaveBranch(@ModelAttribute("branch")Branch branch) {
+	@RequestMapping(value="/editSaveBranch",method = RequestMethod.POST)
+	public String editSaveBranch(@ModelAttribute("branch")Branch branch) {
 		branchDetailsDao.updateBranch(branch);
 		return "redirect:/veiwBranches";
 	}

@@ -84,6 +84,14 @@ form input[type="submit"] {
 			<tr>
 				<td>Branch :</td>
 				<td><form:input path="branchId"/></td>
+			</tr><tr>
+				<td>Availability :</td>
+				<td>
+					<%-- <form:checkbox path="available" value="true"/> --%>
+					<%-- <form:checkbox path="available" /> --%> <label
+						for="available">Available:</label> <input type="checkbox"
+						id="available" name="available">
+				</td>
 			</tr>
 			
 			<tr>

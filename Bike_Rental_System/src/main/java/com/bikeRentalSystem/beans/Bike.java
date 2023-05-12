@@ -9,13 +9,13 @@ public class Bike {
 	private byte[] bikeImage;
 	private int branchId;
 	private double price;
-	private boolean isAvailable;
+	private boolean available;
 	
 	public boolean isAvailable() {
-		return isAvailable;
+		return available;
 	}
-	public void setAvailable(boolean isAvailable) {
-		this.isAvailable = isAvailable;
+	public void setAvailable(boolean available) {
+		this.available = available;
 	}
 	public int getBranchId() {
 		return branchId;
@@ -69,7 +69,7 @@ public class Bike {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Bike(String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,int branchId,boolean isAvailable) {
+	public Bike(String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,int branchId,boolean available) {
 		super();
 		this.bikeName = bikeName;
 		this.model = model;
@@ -77,9 +77,9 @@ public class Bike {
 		this.bikeImage = bikeImage;
 		this.price = price;
 		this.branchId=branchId;
-		this.isAvailable=isAvailable;
+		this.available=available;
 	}
-	public Bike(int bikeId, String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,String imageData,int branchId,boolean isAvailable) {
+	public Bike(int bikeId, String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,String imageData,int branchId,boolean available) {
 		super();
 		this.bikeId = bikeId;
 		this.bikeName = bikeName;
@@ -88,9 +88,9 @@ public class Bike {
 		this.bikeImage = bikeImage;
 		this.price = price;
 		this.branchId=branchId;
-		this.isAvailable=isAvailable;
+		this.available=available;
 	}
-	public Bike(int bikeId, String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,int branchId,boolean isAvailable) {
+	public Bike(int bikeId, String bikeName, String model, int manufacturedYear, byte[] bikeImage, double price,int branchId,boolean available) {
 		super();
 		this.bikeId = bikeId;
 		this.bikeName = bikeName;
@@ -99,7 +99,7 @@ public class Bike {
 		this.bikeImage = bikeImage;
 		this.price = price;
 		this.branchId=branchId;
-		this.isAvailable=isAvailable;
+		this.available=available;
 	}
 	
 	

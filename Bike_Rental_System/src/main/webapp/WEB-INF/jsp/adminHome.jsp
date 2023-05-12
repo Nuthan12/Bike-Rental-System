@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Home</title>
 
 <style type="text/css">
 body {
@@ -36,18 +36,24 @@ button:hover {
 
 body {
 	background-image:
-		url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/c20f9b101544379.5f21408a955ab.gif");
+		url("https://media.giphy.com/media/26uf2I4Vlv2ttNvZm/giphy.gif");
 	background-repeat: no-repeat;
 	background-size: cover;
+	
 }
 
 .container {
 	text-align: center;
 }
+#logout {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
 </style>
 </head>
-<body>
-<center>
+<body align="center">
 	<h1>Hello Admin!!!</h1>
 	<div>
 		<button onclick="window.location.href='veiwCustomers'">Veiw Customers</button>
@@ -56,7 +62,11 @@ body {
 		<button onclick="window.location.href='veiwBikes'">Veiw Bikes</button>
 		<button onclick="window.location.href='veiwBranches'">Veiw Branches</button>
 		
+		
 	</div>
-	</center>
+	<div>
+		<button id="logout"  onclick="window.location.href='/Bike_Rental_System'">Logout</button>
+	</div>
+
 </body>
 </html>
