@@ -19,8 +19,7 @@
 			<th>Bike Model</th>
 			<th>Manufactured Year</th>
 			<th>Bike Image</th>
-			<th>Edit</th>
-			<th>Delete</th>
+			<th>Book</th>
 
 		</tr>
 		<c:forEach var="c" items="${list}">
@@ -31,7 +30,7 @@
 				<td>${c.manufacturedYear}</td>
 				<%-- <td type="image">${c.bikeImage}</td> --%>
 				<td><img width="25" height="30" src="data:image/png;base64,${c.bikeImage}"></td>
-				<td><button><a href="bookBike/${c.bikeId}">Book Now</a></button></td>
+				<td align="center"><button><a href="bookBike/${c.bikeId}">Book Now</a></button></td>
 				
 
 				

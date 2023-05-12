@@ -15,8 +15,8 @@ public class Booking {
 	private String branchName;
 	private String branchAddress;
 	private long branchPinCode; 
-	private LocalDateTime localDateTime;
-	private int noOfDays;
+	private LocalDateTime bookingDateTime;
+	
 	
 	
 	
@@ -44,17 +44,11 @@ public class Booking {
 	public void setBranchPinCode(long branchPinCode) {
 		this.branchPinCode = branchPinCode;
 	}
-	public int getNoOfDays() {
-		return noOfDays;
+	public LocalDateTime getBookingDateTime() {
+		return bookingDateTime;
 	}
-	public void setNoOfDays(int noOfDays) {
-		this.noOfDays = noOfDays;
-	}
-	public LocalDateTime getLocalDateTime() {
-		return localDateTime;
-	}
-	public void setLocalDateTime(LocalDateTime localDateTime) {
-		this.localDateTime = localDateTime;
+	public void setBookingDateTime(LocalDateTime localDateTime) {
+		this.bookingDateTime = LocalDateTime.now();
 	}
 	public int getBikeId() {
 		return bikeId;
@@ -103,8 +97,7 @@ public class Booking {
 	
 	
 	public Booking(int bikeId, String bikeName, String model, int manufacturedYear, byte[] bikeImage,
-			double price, int branchId, String branchName, String branchAddress, long branchPinCode,
-			LocalDateTime localDateTime, int noOfDays) {
+			double price, int branchId, String branchName, String branchAddress, long branchPinCode) {
 		super();
 		this.bikeId = bikeId;
 		this.bikeName = bikeName;
@@ -116,12 +109,10 @@ public class Booking {
 		this.branchName = branchName;
 		this.branchAddress = branchAddress;
 		this.branchPinCode = branchPinCode;
-		this.localDateTime = localDateTime;
-		this.noOfDays = noOfDays;
+		this.bookingDateTime = LocalDateTime.now();
 	}
 	public Booking(int bookingId, int bikeId, String bikeName, String model, int manufacturedYear,
-			byte[] bikeImage, double price, int branchId, String branchName, String branchAddress, long branchPinCode,
-			LocalDateTime localDateTime, int noOfDays) {
+			byte[] bikeImage, double price, int branchId, String branchName, String branchAddress, long branchPinCode) {
 		super();
 		this.bookingId = bookingId;
 		this.bikeId = bikeId;
@@ -134,8 +125,7 @@ public class Booking {
 		this.branchName = branchName;
 		this.branchAddress = branchAddress;
 		this.branchPinCode = branchPinCode;
-		this.localDateTime = localDateTime;
-		this.noOfDays = noOfDays;
+		this.bookingDateTime = LocalDateTime.now();
 	}
 	public Booking() {
 		super();

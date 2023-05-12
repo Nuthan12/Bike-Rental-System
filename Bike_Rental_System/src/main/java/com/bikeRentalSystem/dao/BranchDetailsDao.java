@@ -2,6 +2,7 @@ package com.bikeRentalSystem.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -57,6 +58,20 @@ public class BranchDetailsDao {
 				return b;
 			}
 		});
+	}
+	
+	public List<Branch> searchBranches(String query){
+		List<Branch> searchedBranches=new ArrayList<>();
+		List<Branch> allBranches=getBranches();
+		
+		
+		for (Branch branch : allBranches) {
+            if (branch.getBranchName().toLowerCase().contains(query.toLowerCase()) ||branch.getBranchAddress().toLowerCase().contains(query.toLowerCase())) {
+                searchedBranches.add(branch); // Add the matching branches to the result list
+            }
+        }
+		
+		return searchedBranches;
 	}
 	
 	

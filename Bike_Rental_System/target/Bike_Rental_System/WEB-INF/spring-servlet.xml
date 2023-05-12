@@ -40,6 +40,9 @@
 	<bean id="branchDetailsDao" class="com.bikeRentalSystem.dao.BranchDetailsDao">
 		<property name="jdbcTemplate" ref="jt"></property>
 	</bean>
+	<bean id="bookingDetailsDao" class="com.bikeRentalSystem.dao.BookingDetailsDao">
+		<property name="jdbcTemplate" ref="jt"></property>
+	</bean>
 	
 	
 </beans>

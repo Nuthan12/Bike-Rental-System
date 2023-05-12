@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bikeRentalSystem.beans.Branch;
 import com.bikeRentalSystem.dao.BranchDetailsDao;
@@ -26,6 +27,14 @@ public class BranchController {
 		m.addAttribute("command", new Branch());
 		return "registerBranch";
 	}
+	
+	@RequestMapping(value="/branchSearch")
+	public String  searchBranches(@RequestParam("query")String query,Model m) {
+		 List<Branch> branches = branchDetailsDao.searchBranches(query);
+		m.addAttribute("list", branches);
+		return "veiwBranches";
+	}
+	
 	
 	@RequestMapping(value="/veiwBranches")
 	public String  veiwBranches(Model m) {

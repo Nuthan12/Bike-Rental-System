@@ -69,6 +69,10 @@ public class BikeDetailsDao {
 		String sql = "select * from BikeDetails where bikeId=?";
 		return jdbcTemplate.queryForObject(sql, new Object[] { bikeId }, new BeanPropertyRowMapper<Bike>(Bike.class));
 	}
+	public Bike getBikeByAvailability() {
+		String sql = "select * from BikeDetails where available=1";
+		return jdbcTemplate.queryForObject(sql, new Object[] {}, new BeanPropertyRowMapper<Bike>(Bike.class));
+	}
 
 	public List<Bike> getBikesByBranchId(int branchId) {
 
@@ -83,6 +87,24 @@ public class BikeDetailsDao {
 				b.setPrice(rs.getDouble(6));
 				b.setBranchId(rs.getInt(8));
 				b.setAvailable(rs.getBoolean(7));
+				return b;
+			}
+		});
+	}
+	
+	public List<Bike> getBikesByAvailability() {
+
+		return jdbcTemplate.query("select * from BikeDetails where available=true", new RowMapper<Bike>() {
+			public Bike mapRow(ResultSet rs, int row) throws SQLException {
+				Bike b = new Bike();
+				b.setBikeId(rs.getInt(1));
+				b.setBikeName(rs.getString(2));
+				b.setModel(rs.getString(3));
+				b.setManufacturedYear(rs.getInt(4));
+				b.setBikeImage(rs.getBytes(5));
+				b.setPrice(rs.getDouble(6));
+				b.setBranchId(rs.getInt(8));
+				
 				return b;
 			}
 		});
