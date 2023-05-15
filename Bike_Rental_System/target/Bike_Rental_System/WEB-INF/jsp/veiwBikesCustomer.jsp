@@ -18,6 +18,7 @@
 			<th>Bike Name</th>
 			<th>Bike Model</th>
 			<th>Manufactured Year</th>
+			<th>Branch Id</th>
 			<th>Bike Image</th>
 			<th>Book</th>
 
@@ -28,9 +29,17 @@
 				<td>${c.bikeName}</td>
 				<td>${c.model}</td>
 				<td>${c.manufacturedYear}</td>
+				<td>${c.branchId}</td>
 				<%-- <td type="image">${c.bikeImage}</td> --%>
 				<td><img width="25" height="30" src="data:image/png;base64,${c.bikeImage}"></td>
-				<td align="center"><button><a href="bookBike/${c.bikeId}">Book Now</a></button></td>
+			    <td align="center">
+                    <form action="<c:url value='/bookBike'/>" method="post">
+                        <input type="hidden" name="bikeId" value="${c.bikeId}"/>
+                        <input type="submit" value="Book Now"/>
+                    </form>
+                </td>
+				
+
 				
 
 				

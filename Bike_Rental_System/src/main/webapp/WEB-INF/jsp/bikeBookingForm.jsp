@@ -22,14 +22,8 @@
 
         <c:forEach var="c" items="${list}">
           <tr>
-            <td>Bike Name: ${c.bikeName}</td>
-            <td>Bike Model: ${c.bikeName}</td>
-            <td>Model: ${c.model}</td>
-            <td>Manufactured Year: ${c.manufacturedYear}</td>
-            <td>Image: <img width="25" height="30" src="data:image/png;base64,${c.bikeImage}"></td>
-            <td>Branch Name: ${c.branchName}</td>
-            <td>Branch Address: ${c.branchAddress}</td>
-            <td>Pin Code: ${c.branchPinCode}</td>
+            <td>Customer Id: ${c.custId}</td>
+            
           </tr>
         </c:forEach>
       </table>

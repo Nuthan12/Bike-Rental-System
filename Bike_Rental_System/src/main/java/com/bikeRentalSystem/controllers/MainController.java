@@ -11,9 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.bikeRentalSystem.beans.Bike;
 import com.bikeRentalSystem.beans.Customer;
 import com.bikeRentalSystem.dao.CustomerDao;
 
@@ -41,11 +39,7 @@ public class MainController {
 		return "customerHome";
 	}
 	
-//	@RequestMapping(value="/adminHome")
-//	public String  showAdminHome(Model m) {
-//		m.addAttribute(m);
-//		return "adminHome";
-//	}
+
 	
 	@RequestMapping(value = "/loginPage", method = RequestMethod.POST)
 	public String loginUser(@Validated @ModelAttribute("customer") Customer customer, 

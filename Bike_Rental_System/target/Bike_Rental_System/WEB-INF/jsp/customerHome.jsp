@@ -64,5 +64,10 @@ body {
 	<div>
 		<button id="logout" onclick="window.location.href='/Bike_Rental_System'">Logout</button>
 	</div>
+	<%-- Check if the customer is logged in --%>
+<c:if test="${customer != null}">
+    <button onclick="window.location.href='/Bike_Rental_System/bookingHistory'">Booking History</button>
+</c:if>
+	
 </body>
 </html>

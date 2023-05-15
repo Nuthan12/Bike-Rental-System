@@ -9,7 +9,7 @@ public class AdminController {
 	
 	
 	@RequestMapping(value="/adminHome")
-	public String  showLoginPage(Model m) {
+	public String  showAdminPage(Model m) {
 		m.addAttribute(m);
 		return "adminHome";
 	}

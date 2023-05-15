@@ -2,13 +2,11 @@ package com.bikeRentalSystem.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Base64;
 import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bikeRentalSystem.beans.Bike;
 
@@ -130,5 +128,16 @@ public class BikeDetailsDao {
 				return b;
 			}
 		});
+	}
+	
+	public void setBikeAvailablity(int bikeId,boolean status) {
+		Bike bike=getBikeById(bikeId);
+		bike.setAvailable(status);
+	}
+	
+	public double getHourlyRate(int bikeId) {
+		Bike bike=getBikeById(bikeId);
+		double price=bike.getPrice();
+		return price;
 	}
 }
