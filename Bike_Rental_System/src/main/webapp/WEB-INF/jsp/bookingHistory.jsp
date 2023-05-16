@@ -67,27 +67,17 @@ a:hover {
 			<th>Customer ID</th>
 			<th>Bike ID</th>
 			<th>Booked Time</th>
-			<th>Return</th>
+			
 		</tr>
 		<c:forEach var="booking" items="${bookingHistory}">
 			<tr>
 				<td>${booking.bookingId}</td>
-				<td>${booking.customer.custId}</td>
-				<td>${booking.bike.bikeId}</td>
+				<td>${booking.custId}</td>
+				<td>${booking.bikeId}</td>
 				<td>${booking.bookedTime}</td>
-				<td>
-					<form action="payment" method="post">
-						<input type="hidden" name="bookingId" value="${booking.bookingId}" />
-						<button type="submit">Return</button>
-					</form>
-
-				</td>
+				
 			</tr>
 		</c:forEach>
 	</table>
-
-	<p>
-		<a href="veiwBikesCustomer">Back to Bikes List</a>
-	</p>
 </body>
 </html>

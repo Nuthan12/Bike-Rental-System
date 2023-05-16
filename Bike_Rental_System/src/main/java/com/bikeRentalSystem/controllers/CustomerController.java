@@ -60,14 +60,14 @@ public class CustomerController {
 		if (booking != null) {
 			model.addAttribute("bookingId", booking.getBookingId());
 
-			Bike bike = booking.getBike();
+			Bike bike = bikeDetailsDao.getBikeById(booking.getBikeId());
 			if (bike != null) {
 				model.addAttribute("bikeId", bike.getBikeId());
 			} else {
 				model.addAttribute("bikeId", "N/A");
 			}
 
-			Customer customer = booking.getCustomer();
+			Customer customer = custDao.getCustomerById(booking.getCustId());
 			if (customer != null) {
 				model.addAttribute("custId", customer.getCustId());
 			} else {
@@ -88,14 +88,17 @@ public class CustomerController {
 	@PostMapping("/bookBike")
 	public String bookBikeDetails(@RequestParam("bikeId") int bikeId, HttpSession session) {
 		Customer customer = (Customer) session.getAttribute("customer");
+		int id=customer.getCustId();
 
 		Bike bike = bikeDetailsDao.getBikeById(bikeId);
+		int bId=bike.getBikeId();
 
 		Booking booking = new Booking();
 		booking.setBookingId(bookingDetailsDao.generateBookingId()); 
 		booking.setBookedTime(LocalDateTime.now());
-		booking.setCustomer(customer);
-		booking.setBike(bike);
+		booking.setCustId(id);
+		booking.setBikeId(bId);
+		booking.setReturnStatus(false);
 
 		/* bikeDetailsDao.setBikeAvailablity(booking.getBike().getBikeId(), false); */
 
@@ -104,6 +107,20 @@ public class CustomerController {
 		return "redirect:/bookingConfirmation/" + booking.getBookingId();
 	}
 
+	@RequestMapping(value = "/returnHistory", method = RequestMethod.GET)
+	public String getreturnHistory(Model model, HttpSession session) {
+	    Customer customer = (Customer) session.getAttribute("customer");
+	    
+	    
+	    List<Booking> returnHistory = bookingDetailsDao.getBookingHistoryByCustomerIdAndReturnStatus(customer.getCustId());
+	    
+	    
+	    
+	    
+	    model.addAttribute("returnHistory", returnHistory);
+	    
+	    return "returnHistory";
+	}
 	@RequestMapping(value = "/bookingHistory", method = RequestMethod.GET)
 	public String getBookingHistory(Model model, HttpSession session) {
 	    Customer customer = (Customer) session.getAttribute("customer");
@@ -115,12 +132,14 @@ public class CustomerController {
 	    return "bookingHistory";
 	}
 	
-	@RequestMapping(value = "/payment", method = RequestMethod.POST)
+	@RequestMapping(value = "/payment/{bookingId}", method = RequestMethod.POST)
 	public String payment(@RequestParam("bookingId") String bookingId, Model model) {
 	    
-		System.out.println("test: "+bookingId);
+		 System.out.println("test: "+bookingId);
 	    Booking booking = bookingDetailsDao.getBookingById(bookingId);
-	    Bike bike = bikeDetailsDao.getBikeById(booking.getBike().getBikeId());
+	    Bike bike = bikeDetailsDao.getBikeById(booking.getBikeId());
+	    bike.setAvailable(true);
+	    System.out.println(bike);
 	    double hourlyRate = bike.getPrice();
 	    LocalDateTime bookedTime = booking.getBookedTime();
 	    LocalDateTime currentTime = LocalDateTime.now();

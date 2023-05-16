@@ -46,7 +46,7 @@ body{
 		<li><strong>Booked Time:</strong> <c:out value="${bookedTime}" /></li>
 	</ul>
 	
-	 <button id="logout" onclick="window.location.href='/customerHome'">Logout</button>
+	 <button id="logout" onclick="window.location.href='/Bike_Rental_System/customerHome'">Home</button>
 
 	<!-- <p><a href="viewBikesCustomer">Back to Bikes List</a></p> -->
 </body>

@@ -6,61 +6,77 @@ public class Booking {
 
 	private String bookingId;
 	private LocalDateTime bookedTime;
-	private Customer customer;
-	private Bike bike;
-
-	public String getBookingId() {
-		return bookingId;
+	private int custId;
+	private int bikeId;
+	private boolean returnStatus;
+	
+	
+	public boolean isReturnStatus() {
+		return returnStatus;
 	}
-
-	public void setBookingId(String bookingId) {
-		this.bookingId = bookingId;
+	public void setReturnStatus(boolean returnStatus) {
+		this.returnStatus = returnStatus;
 	}
-
-	public LocalDateTime getBookedTime() {
-		return bookedTime;
-	}
-
-	public void setBookedTime(LocalDateTime bookedTime) {
-		this.bookedTime = bookedTime;
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Bike getBike() {
-		return bike;
-	}
-
-	public void setBike(Bike bike) {
-		this.bike = bike;
-	}
-
-	public Booking(String bookingId, LocalDateTime bookedTime, Customer customer, Bike bike) {
-		super();
-		this.bookingId = bookingId;
-		this.bookedTime = bookedTime;
-		this.customer = customer;
-		this.bike = bike;
-
-	}
-
 	public Booking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Booking(LocalDateTime bookedTime, Customer customer, Bike bike) {
+	public Booking(LocalDateTime bookedTime, int custId, int bikeId) {
 		super();
 		this.bookedTime = bookedTime;
-		this.customer = customer;
-		this.bike = bike;
-
+		this.custId = custId;
+		this.bikeId = bikeId;
 	}
+	public Booking(String bookingId, LocalDateTime bookedTime, int custId, int bikeId) {
+		super();
+		this.bookingId = bookingId;
+		this.bookedTime = bookedTime;
+		this.custId = custId;
+		this.bikeId = bikeId;
+	}
+	
+	public Booking(String bookingId, LocalDateTime bookedTime, int custId, int bikeId, boolean returnStatus) {
+		super();
+		this.bookingId = bookingId;
+		this.bookedTime = bookedTime;
+		this.custId = custId;
+		this.bikeId = bikeId;
+		this.returnStatus = returnStatus;
+	}
+	
+	public Booking(LocalDateTime bookedTime, int custId, int bikeId, boolean returnStatus) {
+		super();
+		this.bookedTime = bookedTime;
+		this.custId = custId;
+		this.bikeId = bikeId;
+		this.returnStatus = returnStatus;
+	}
+	public String getBookingId() {
+		return bookingId;
+	}
+	public void setBookingId(String bookingId) {
+		this.bookingId = bookingId;
+	}
+	public LocalDateTime getBookedTime() {
+		return bookedTime;
+	}
+	public void setBookedTime(LocalDateTime bookedTime) {
+		this.bookedTime = bookedTime;
+	}
+	public int getCustId() {
+		return custId;
+	}
+	public void setCustId(int custId) {
+		this.custId = custId;
+	}
+	public int getBikeId() {
+		return bikeId;
+	}
+	public void setBikeId(int bikeId) {
+		this.bikeId = bikeId;
+	}
+
+	
+	
 
 }

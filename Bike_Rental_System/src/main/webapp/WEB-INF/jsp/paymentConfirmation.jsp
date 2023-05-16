@@ -64,7 +64,7 @@
         </div>
         
         <div class="back-link">
-            <a href="veiwBikesCustomer">Back to Bikes List</a>
+             <button id="logout" onclick="window.location.href='/Bike_Rental_System/veiwBikesCustomer'">Back To Bikes List</button>
         </div>
     </div>
 </body>

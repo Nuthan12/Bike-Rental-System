@@ -1,5 +1,6 @@
 D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\controllers\BranchController.java
 D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\controllers\CustomerController.java
+D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\beans\Payment.java
 D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\beans\Bike.java
 D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\controllers\RegistrationController.java
 D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\controllers\PaymentController.java
@@ -7,6 +8,7 @@ D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\controllers\BikeCon
 D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\controllers\AdminController.java
 D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\dao\BranchDetailsDao.java
 D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\dao\CustomerDao.java
+D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\dao\PaymentDetailsDao.java
 D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\beans\Branch.java
 D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\beans\Booking.java
 D:\brs\Bike_Rental_System\src\main\java\com\bikeRentalSystem\dao\BikeDetailsDao.java

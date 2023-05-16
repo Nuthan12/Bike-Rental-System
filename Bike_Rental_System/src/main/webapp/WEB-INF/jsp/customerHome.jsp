@@ -68,6 +68,9 @@ body {
 <c:if test="${customer != null}">
     <button onclick="window.location.href='/Bike_Rental_System/bookingHistory'">Booking History</button>
 </c:if>
+<c:if test="${customer != null}">
+    <button onclick="window.location.href='/Bike_Rental_System/returnHistory'">Return Bikes</button>
+</c:if>
 	
 </body>
 </html>

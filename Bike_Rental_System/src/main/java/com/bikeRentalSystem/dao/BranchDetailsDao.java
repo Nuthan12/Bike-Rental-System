@@ -46,6 +46,10 @@ public class BranchDetailsDao {
 		String sql = "select * from BranchDetails where branchId=?";
 		return jdbcTemplate.queryForObject(sql, new Object[] { branchId }, new BeanPropertyRowMapper<Branch>(Branch.class));
 	}
+	public Branch getBranchByName(String branchName) {
+		String sql = "select * from BranchDetails where branchName=?";
+		return jdbcTemplate.queryForObject(sql, new Object[] { branchName }, new BeanPropertyRowMapper<Branch>(Branch.class));
+	}
 	
 	public List<Branch> getBranches() {
 		return jdbcTemplate.query("select * from BranchDetails", new RowMapper<Branch>() {

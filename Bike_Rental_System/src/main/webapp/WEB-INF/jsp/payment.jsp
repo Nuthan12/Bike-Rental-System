@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +10,11 @@
 </head>
 <body>
     <h1>Return Payment</h1>
+    <li><strong>Booking ID:</strong> <c:out value="${booking.bookingId}" /></li>
     
-    <form action="processPayment" method="post">
-        <input type="hidden" name="bookingId" value="${bookingId}" />
+    <form action="processPayment/${booking.bookingId}" method="post">
+        
+
         
         <h3>Payment Information</h3>
         <label for="cardNumber">Card Number:</label>
@@ -22,9 +26,14 @@
         <label for="cvv">CVV:</label>
         <input type="text" id="cvv" name="cvv" required><br>
         
-        <button type="submit">Process Payment</button>
+        <input type="hidden" name="bookingId" value="${booking.bookingId}" /> 
+						<button type="submit">Process Payment</button>
+        
+        
     </form>
+   
     
     <p><a href="bookingHistory">Back to Booking History</a></p>
 </body>
 </html>
+

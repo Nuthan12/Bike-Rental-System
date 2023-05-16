@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,6 +19,9 @@ import com.bikeRentalSystem.beans.Booking;
 import com.bikeRentalSystem.beans.Customer;
 
 public class BookingDetailsDao {
+	
+	@Autowired
+	private BikeDetailsDao bikeDetailsDao;
 
 	private JdbcTemplate jdbcTemplate;
 
@@ -29,16 +33,17 @@ public class BookingDetailsDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public void setBikeAvailableStatus(int bikeId) {
+	public void setBikeAvailableStatusToTrue(int bikeId) {
 		String sql = "UPDATE BikeDetails SET available = 0 WHERE bikeId = " + bikeId;
 		jdbcTemplate.update(sql);
 	}
 
 	public int bookBike(Booking booking) {
-		String sql = "INSERT INTO BookingDetails (bookingId,custId,bikeId,bookedTime,branchId) VALUES (?, ?, ?, ?, ?)";
-		setBikeAvailableStatus(booking.getBike().getBikeId());
-		return jdbcTemplate.update(sql, booking.getBookingId(), booking.getCustomer().getCustId(),
-				booking.getBike().getBikeId(), booking.getBookedTime(), booking.getBike().getBranchId());
+		String sql = "INSERT INTO BookingDetails (bookingId,custId,bikeId,bookedTime,branchId,returnStatus) VALUES (?, ?, ?, ?, ?,?)";
+		setBikeAvailableStatusToTrue(booking.getBikeId());
+		System.out.println(bikeDetailsDao.getBranchIdByBikeId(booking.getBikeId()));
+		return jdbcTemplate.update(sql, booking.getBookingId(), booking.getCustId(),
+				booking.getBikeId(), booking.getBookedTime(),bikeDetailsDao.getBranchIdByBikeId(booking.getBikeId()),false);
 
 	}
 
@@ -63,7 +68,6 @@ public class BookingDetailsDao {
 		try {
 			booking = jdbcTemplate.queryForObject(sql, rowMapper, bookingId);
 		} catch (EmptyResultDataAccessException e) {
-			// Handle empty result, e.g., log an error or throw a custom exception
 		}
 
 		return booking;
@@ -79,6 +83,31 @@ public class BookingDetailsDao {
 			}
 		});
 	}
+	
+	public Bike getBikeByBookingId(String bookingId) {
+		String sql="SELECT b.* FROM BookingDetails bd"+"INNER JOIN BikeDetails b ON bd.bikeId = b.bikeId"+"WHERE bd.bookingId = ?";
+		try {
+			Bike bike=jdbcTemplate.queryForObject(sql, new Object[] {bookingId},new RowMapper<Bike>() {
+				public Bike mapRow(ResultSet rs,int rowNum) throws SQLException{
+					Bike bike=new Bike();
+					bike.setBikeId(rs.getInt("bikeId"));
+					bike.setBikeName(rs.getString("bikeName"));
+					bike.setModel(rs.getString("model"));
+					bike.setManufacturedYear(rs.getInt("manufacturedYear"));
+					bike.setBikeImage(rs.getBytes("bikeImage"));
+					bike.setPrice(rs.getDouble("price"));
+					bike.setAvailable(rs.getBoolean("available"));
+					bike.setBranchId(rs.getInt("branchId"));
+					return bike;
+				}
+			});
+			return bike;
+		}
+		catch(Exception e) {
+			return null;
+		}
+		
+	}
 
 	public List<Booking> getBookingHistoryByCustomerId(int customerId) {
 		String sql = "SELECT * FROM BookingDetails WHERE custId = ?";
@@ -93,26 +122,85 @@ public class BookingDetailsDao {
 
 					Customer customer = new Customer();
 					customer.setCustId(rs.getInt("custId"));
-					// Set other properties of Customer if needed
-					booking.setCustomer(customer);
+					int cId=customer.getCustId();
+					booking.setCustId(cId);
 
 					Bike bike = new Bike();
 					bike.setBikeId(rs.getInt("bikeId"));
-					// Set other properties of Bike if needed
-					booking.setBike(bike);
+					int bId=bike.getBikeId();
+					booking.setBikeId(bId);
 
 					booking.setBookedTime(rs.getTimestamp("bookedTime").toLocalDateTime());
 
-					// Set other properties as needed
 
 					return booking;
 				}
 			});
 		} catch (EmptyResultDataAccessException e) {
-			// Handle empty result if needed
 		}
 
 		return bookingHistory;
 	}
+	
+	public List<Booking> getBookingHistoryByCustomerIdAndReturnStatus(int customerId) {
+		String sql = "SELECT * FROM BookingDetails WHERE custId = ? and returnStatus = 0";
+		List<Booking> bookingHistory = new ArrayList<>();
 
+		try {
+			bookingHistory = jdbcTemplate.query(sql, new Object[] { customerId }, new RowMapper<Booking>() {
+				@Override
+				public Booking mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Booking booking = new Booking();
+					booking.setBookingId(rs.getString("bookingId"));
+
+					Customer customer = new Customer();
+					customer.setCustId(rs.getInt("custId"));
+					int cId=customer.getCustId();
+					booking.setCustId(cId);
+
+					Bike bike = new Bike();
+					bike.setBikeId(rs.getInt("bikeId"));
+					int bId=bike.getBikeId();
+					
+					booking.setBikeId(bId);
+
+					booking.setBookedTime(rs.getTimestamp("bookedTime").toLocalDateTime());
+
+					
+
+					return booking;
+				}
+			});
+		} catch (EmptyResultDataAccessException e) {
+			
+		}
+
+		return bookingHistory;
+	}
+	
+	
+	public int setreturnStatusAfterPayment(Booking b) {
+		String sql="Update BookingDetails set returnStatus = 1 where  bookingId = "+b.getBookingId()+"";
+		return jdbcTemplate.update(sql);
+	}
+	
+	public double calculateRevenueByBranchAndPeriod(int branchId, int year, int quarter, int month) {
+	   
+	    String sql = "SELECT SUM(paymentAmount) FROM PaymentDetails " +
+	                 "INNER JOIN BookingDetails ON PaymentDetails.bookingId = BookingDetails.bookingId " +
+	                 "WHERE BookingDetails.branchId = ? " +
+	                 "AND YEAR(BookingDetails.bookedTime) = ? " +
+	                 "AND QUARTER(BookingDetails.bookedTime) = ? " +
+	                 "AND MONTH(BookingDetails.bookedTime) = ?";
+	    
+	    Double revenue = jdbcTemplate.queryForObject(sql, Double.class, branchId, year, quarter, month);
+	    
+	    if (revenue == null) {
+	        revenue = 0.0;
+	    }
+	    
+	    return revenue;
+	}
+
+	
 }

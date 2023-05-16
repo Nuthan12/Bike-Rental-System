@@ -62,6 +62,11 @@ public class BikeDetailsDao {
 		String sql = "delete from BikeDetails where bikeId=" + bikeId + "";
 		return jdbcTemplate.update(sql);
 	}
+	
+	public int getBranchIdByBikeId(int bikeId){
+		String sql="Select branchId From BikeDetails Where bikeId = ?";
+		return jdbcTemplate.queryForObject(sql, new Object[] {bikeId},Integer.class);
+	}
 
 	public Bike getBikeById(int bikeId) {
 		String sql = "select * from BikeDetails where bikeId=?";
