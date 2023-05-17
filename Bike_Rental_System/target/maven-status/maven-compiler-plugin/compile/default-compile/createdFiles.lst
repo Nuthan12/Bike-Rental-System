@@ -15,6 +15,7 @@ com\bikeRentalSystem\dao\BookingDetailsDao$2.class
 com\bikeRentalSystem\dao\BikeDetailsDao.class
 com\bikeRentalSystem\beans\Branch.class
 com\bikeRentalSystem\controllers\LoginControllerAdvice.class
+com\bikeRentalSystem\dao\BookingDetailsDao$5.class
 com\bikeRentalSystem\beans\Payment.class
 com\bikeRentalSystem\controllers\BikeController.class
 com\bikeRentalSystem\controllers\RegistrationController.class

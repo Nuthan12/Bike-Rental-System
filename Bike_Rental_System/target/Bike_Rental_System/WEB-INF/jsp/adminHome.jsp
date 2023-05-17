@@ -62,6 +62,7 @@ body {
 		<button onclick="window.location.href='veiwBikes'">Veiw Bikes</button>
 		<button onclick="window.location.href='veiwBranches'">Veiw Branches</button>
 		<button onclick="window.location.href='revenue'">Generate Revenue</button>
+		<button onclick="window.location.href='bookingHistoryAdmin'">Generate Revenue</button>
 		
 		
 	</div>

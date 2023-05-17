@@ -222,5 +222,36 @@ public class BookingDetailsDao {
 			return null;
 		}
 	}
+	
+	public List<Booking> getBookingHistory() {
+		String sql = "SELECT * FROM BookingDetails ";
+		List<Booking> bookingHistory = new ArrayList<>();
 
+		try {
+			bookingHistory = jdbcTemplate.query(sql, new Object[] { }, new RowMapper<Booking>() {
+				@Override
+				public Booking mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Booking booking = new Booking();
+					booking.setBookingId(rs.getString("bookingId"));
+
+					Customer customer = new Customer();
+					customer.setCustId(rs.getInt("custId"));
+					int cId = customer.getCustId();
+					booking.setCustId(cId);
+
+					Bike bike = new Bike();
+					bike.setBikeId(rs.getInt("bikeId"));
+					int bId = bike.getBikeId();
+					booking.setBikeId(bId);
+
+					booking.setBookedTime(rs.getTimestamp("bookedTime").toLocalDateTime());
+
+					return booking;
+				}
+			});
+		} catch (EmptyResultDataAccessException e) {
+		}
+
+		return bookingHistory;
+	}
 }
