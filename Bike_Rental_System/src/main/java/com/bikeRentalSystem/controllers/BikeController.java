@@ -50,7 +50,7 @@ public class BikeController {
 	     }
 		catch (Exception e) {
 			// TODO: handle exception
-			return null;
+			return "exceptionHandler";
 		}
 	}
 	
@@ -75,10 +75,15 @@ public class BikeController {
 		
 	}
 	@RequestMapping(value="/deleteBike/{bikeId}",method=RequestMethod.GET)
-	public String deleteBike(@PathVariable int bikeId) {
+	public String deleteBike(@PathVariable int bikeId) throws Exception {
+		try {
 		bikeDetailsDao.deleteBike(bikeId);
 		return "redirect:/veiwBikes";
 	}
+		catch(Exception e) {
+			return "redirect:/exceptionHandler";
+		}
+		}
 	
 	@RequestMapping(value="/availableBikes",method=RequestMethod.GET)
 	public String availableBikes(Model m) throws SSLException{
@@ -90,7 +95,7 @@ public class BikeController {
 	     }
 		catch (Exception e) {
 			// TODO: handle exception
-			return null;
+			return "exceptionHandler";
 		}
 	}
 	

@@ -43,29 +43,34 @@ public class MainController {
 	
 	@RequestMapping(value = "/loginPage", method = RequestMethod.POST)
 	public String loginUser(@Validated @ModelAttribute("customer") Customer customer, 
-			BindingResult result,
-			ModelMap m,
-			HttpSession httpSession) {
-		String customerMail=customer.getCustMail();
-		String custPassword=customer.getPassword();
-		
-		System.out.printf(customerMail,custPassword);
-		Customer cust=customerDao.getCustomerByMailAndPassword(customerMail, custPassword);
-		if(cust!=null) {
-			httpSession.setAttribute("customer", cust);
-			if(cust.getAuthorities().equals("user")) {
-				return "customerHome";
-			}
-			else if(cust.getAuthorities().equals("admin")) {
-				return "adminHome";
-			}
-			else {
-				m.addAttribute("error", "Invalid Email or Password");
-				return "loginPage";
-			}
-		}
-		return null;
-	   
+	        BindingResult result,
+	        ModelMap m,
+	        Model model,
+	        HttpSession httpSession) {
+	    try {
+	        String customerMail = customer.getCustMail();
+	        String custPassword = customer.getPassword();
+
+	        System.out.printf(customerMail, custPassword);
+	        Customer cust = customerDao.getCustomerByMailAndPassword(customerMail, custPassword);
+	        if (cust != null) {
+	            httpSession.setAttribute("customer", cust);
+	            if (cust.getAuthorities().equals("user")) {
+	                return "customerHome";
+	            } else if (cust.getAuthorities().equals("admin")) {
+	                return "adminHome";
+	            } else {
+	                model.addAttribute("error", "Invalid Email or Password");
+	                return "loginPage";
+	            }
+	        } else {
+	            model.addAttribute("error", "Invalid Email or Password");
+	            return "loginPage";
+	        }
+	    } catch (Exception e) {
+	        model.addAttribute("error", "An error occurred during login. Please Check Your Email and Password");
+	        return "loginPage";
+	    }
 	}
 	
 	

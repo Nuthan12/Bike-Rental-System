@@ -1,12 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Return Payment</title>
-    <!-- Add your CSS stylesheets and other dependencies here -->
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f9f9f9;
+    }
+    
+    h1 {
+        color: #333;
+    }
+    
+    form {
+        display: inline-block;
+        text-align: left;
+        margin: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    
+    input[type="text"] {
+        width: 200px;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    a {
+        color: #333;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    </style>
 </head>
 <body>
     <h1>Return Payment</h1>

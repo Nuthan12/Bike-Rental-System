@@ -28,12 +28,7 @@ public class BranchController {
 		return "registerBranch";
 	}
 	
-	@RequestMapping(value="/branchSearch")
-	public String  searchBranches(@RequestParam("query")String query,Model m) {
-		 List<Branch> branches = branchDetailsDao.searchBranches(query);
-		m.addAttribute("list", branches);
-		return "veiwBranches";
-	}
+	
 	
 	
 	@RequestMapping(value="/veiwBranches")
@@ -62,10 +57,16 @@ public class BranchController {
 		return "redirect:/veiwBranches";
 	}
 	@RequestMapping(value="/deleteBranch/{branchId}",method=RequestMethod.GET)
-	public String deleteBranch(@PathVariable int branchId) {
+	public String deleteBranch(@PathVariable int branchId) throws Exception {
+		try {
 		branchDetailsDao.deleteBranch(branchId);
 		return "redirect:/veiwBranches";
 	}
+		catch (Exception e) {
+			return "redirect:/exceptionHandler";
+		}
+	}
+	
 	
 	
 }

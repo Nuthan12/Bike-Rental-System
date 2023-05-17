@@ -46,9 +46,22 @@
             margin-top: 20px;
         }
         
-        .back-link a {
-            color: #333;
-            text-decoration: none;
+        .back-link button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .back-link button:hover {
+            background-color: #45a049;
+        }
+        
+        .back-link button:active {
+            background-color: #3e8e41;
         }
     </style>
 </head>
@@ -64,7 +77,7 @@
         </div>
         
         <div class="back-link">
-             <button id="logout" onclick="window.location.href='/Bike_Rental_System/veiwBikesCustomer'">Back To Bikes List</button>
+             <button id="logout" onclick="window.location.href='/Bike_Rental_System/customerHome'">Home</button>
         </div>
     </div>
 </body>

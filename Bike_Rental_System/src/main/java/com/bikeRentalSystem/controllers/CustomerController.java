@@ -46,7 +46,7 @@ public class CustomerController {
 			return "veiwBikesCustomer";
 		} catch (Exception e) {
 			// TODO: handle exception
-			return null;
+			return "exceptionHandler";
 
 		}
 	}
@@ -100,7 +100,6 @@ public class CustomerController {
 		booking.setBikeId(bId);
 		booking.setReturnStatus(false);
 
-		/* bikeDetailsDao.setBikeAvailablity(booking.getBike().getBikeId(), false); */
 
 		bookingDetailsDao.bookBike(booking);
 

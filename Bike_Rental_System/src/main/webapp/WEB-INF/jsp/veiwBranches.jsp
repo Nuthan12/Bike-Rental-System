@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="navbar.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +18,7 @@
 <body>
 	<h1 align="center">Branches List</h1>
 <div align="center">
-	<form method="GET" action="branchSearch.jsp">
-		<input type="text" name="query" placeholder="Enter the Branch Name">
-		<input type="submit" value="Search">
-	</form>
+	
 	</div>
 	<br>
 	<table border="2" width="70%" cellpadding="2"

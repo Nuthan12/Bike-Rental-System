@@ -2,6 +2,7 @@ com\bikeRentalSystem\dao\BranchDetailsDao$1.class
 com\bikeRentalSystem\dao\CustomerDao.class
 com\bikeRentalSystem\dao\BookingDetailsDao.class
 com\bikeRentalSystem\dao\BranchDetailsDao.class
+com\bikeRentalSystem\controllers\ExceptionHandlerController.class
 com\bikeRentalSystem\dao\BikeDetailsDao$2.class
 com\bikeRentalSystem\dao\BookingDetailsDao$1.class
 com\bikeRentalSystem\beans\Booking.class
@@ -13,6 +14,7 @@ com\bikeRentalSystem\controllers\CustomerController.class
 com\bikeRentalSystem\dao\BookingDetailsDao$2.class
 com\bikeRentalSystem\dao\BikeDetailsDao.class
 com\bikeRentalSystem\beans\Branch.class
+com\bikeRentalSystem\controllers\LoginControllerAdvice.class
 com\bikeRentalSystem\beans\Payment.class
 com\bikeRentalSystem\controllers\BikeController.class
 com\bikeRentalSystem\controllers\RegistrationController.class

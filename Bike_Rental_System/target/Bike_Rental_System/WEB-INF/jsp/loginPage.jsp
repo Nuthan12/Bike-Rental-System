@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
 <style type="text/css">
-/* CSS for centering the login form */
 .login-form {
 	margin: auto;
 	width: 50%;
@@ -25,29 +25,16 @@
 	text-align: center;
 	font-weight: bold;
 }
-/* CSS for styling the form fields */
 .login-form input[type="text"], .login-form input[type="password"] {
-	/* width: 100%;
-	padding: 8px 16px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	box-sizing: border-box */
+	
 	width: 100%;
 	padding: 5px;
 	margin-bottom: 20px;
 	border: 1px solid #ccc;
 	border-radius: 4px
 }
-/* CSS for styling the login button */
 .login-form button[type="submit"] {
-	/* background-color: #4CAF50;
-	color: white;
-	padding: 8px 16px;
-	margin: 8px 0;
-	border: none;
-	cursor: pointer;
-	width: 100%; */
+	
 	background-color: #4CAF50;
 	color: white;
 	padding: 10px 20px;
@@ -57,7 +44,6 @@
 	border-radius: 4px;
 	cursor: pointer;
 }
-/* CSS for styling the cancel button */
 .login-form button[type="button"] {
 	background-color: #4CAF50;
 	color: white;
@@ -65,8 +51,8 @@
 	border: none;
 	cursor: pointer;
 	width: 100%;
-	display: block; /* Added line */
-	margin-top: 10px; /* Added line */
+	display: block; 
+	margin-top: 10px;
 }
 
 .login-button {
@@ -102,6 +88,9 @@
 		<input type="password" id="password" name="password" required>
 		<br> <input type="submit" value="Login" class="login-button">
 	</form>
+	<c:if test="${not empty error}">
+			<p style="color: blue">${error}</p>
+		</c:if>
 	</div>
 	
 </body>

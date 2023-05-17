@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="navbar.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,6 +56,7 @@ form input[type="submit"] {
 </style>
 </head>
 <body>
+<h1 align="center"> Register A New Bike</h1>
 	<c:if test="${not empty error}">
 		<div class="alert alert-danger">${error}</div>
 	</c:if>
@@ -63,15 +65,15 @@ form input[type="submit"] {
 		<table>
 			<tr>
 				<td>Bike Name :</td>
-				<td><form:input path="bikeName" /></td>
+				<td><form:input path="bikeName" placeholder="Enter the Bike Name"/></td>
 			</tr>
 			<tr>
 				<td>Bike Model :</td>
-				<td><form:input path="model" /></td>
+				<td><form:input path="model" placeholder="Enter the Bike Model" /></td>
 			</tr>
 			<tr>
 				<td>Manufactured Year :</td>
-				<td><form:input path="manufacturedYear" /></td>
+				<td><form:input path="manufacturedYear"  placeholder="Enter the Manufactured Year"/></td>
 			</tr>
 			<tr>
 				<td>Image :</td>
@@ -87,8 +89,7 @@ form input[type="submit"] {
 			</tr><tr>
 				<td>Availability :</td>
 				<td>
-					<%-- <form:checkbox path="available" value="true"/> --%>
-					<%-- <form:checkbox path="available" /> --%> <label
+					 <label
 						for="available">Available:</label> <input type="checkbox"
 						id="available" name="available">
 				</td>

@@ -25,5 +25,10 @@ public class PaymentDetailsDao {
 	    return jdbcTemplate.update(sql);    
 	}
 	
+	public int deletePayment(String bookingId) {
+		String sql = "delete from PaymentDetails where bookingId=" + bookingId + "";
+		return jdbcTemplate.update(sql);
+	}
+	
 	
 }
