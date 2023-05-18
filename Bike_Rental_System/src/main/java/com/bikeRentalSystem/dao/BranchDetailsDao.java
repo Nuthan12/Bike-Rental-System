@@ -71,7 +71,7 @@ public class BranchDetailsDao {
 		
 		for (Branch branch : allBranches) {
             if (branch.getBranchName().toLowerCase().contains(query.toLowerCase()) ||branch.getBranchAddress().toLowerCase().contains(query.toLowerCase())) {
-                searchedBranches.add(branch); // Add the matching branches to the result list
+                searchedBranches.add(branch);
             }
         }
 		
