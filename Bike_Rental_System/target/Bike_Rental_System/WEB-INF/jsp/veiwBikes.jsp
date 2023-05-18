@@ -62,7 +62,7 @@ a:hover {
 }
 </style>
 </head>
-<body>
+<body align="center">
 	<h1 align="center">Bikes List</h1>
 
 	<table border="2" width="70%" cellpadding="2"
@@ -84,7 +84,6 @@ a:hover {
 				<td>${c.bikeName}</td>
 				<td>${c.model}</td>
 				<td>${c.manufacturedYear}</td>
-				<%-- <td type="image">${c.bikeImage}</td> --%>
 				<td><img width="25" height="30" src="data:image/png;base64,${c.bikeImage}"></td>
 				<td>${c.available}</td>
 				<td><a href="editBike/${c.bikeId}">Edit</a></td>
@@ -93,5 +92,7 @@ a:hover {
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<button onclick="window.location.href='registerBikes'">Register More Bikes</button>
 </body>
 </html>

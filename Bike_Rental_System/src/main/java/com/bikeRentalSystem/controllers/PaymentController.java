@@ -43,7 +43,7 @@ public class PaymentController {
         double hourlyRate = bike.getPrice();
         LocalDateTime bookedTime = booking.getBookedTime();
         LocalDateTime returnTime = LocalDateTime.now(); 
-        bikeDetailsDao.setBikeAvailablity(bike.getBikeId(), true);
+        bikeDetailsDao.updateBikeAvailable(bike);
         bookingDetailsDao.setreturnStatusAfterPayment(booking);
         
        

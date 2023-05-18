@@ -8,12 +8,64 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Branches</title>
-<link
+<!-- <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous">
-</link>
+</link> -->
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-image: url("https://apartmaji-koren.com/Images/RentA/bike.jpg");
+	background-repeat: norepeat;
+	background-size: cover;
+	color:white;
+}
+
+h1 {
+	color: white;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+th, td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
+	
+}
+
+th {
+	background-color: black;
+}
+
+button {
+	padding: 6px 12px;
+	font-size: 14px;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #45a049;
+}
+
+a {
+	color: #337ab7;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+</style>
 </head>
 <body>
 	<h1 align="center">Branches List</h1>
