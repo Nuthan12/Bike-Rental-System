@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>We Are Sorry</title>
+<link rel="icon" href="https://img.freepik.com/premium-vector/bike-sharing-rental-service-logo-icon-with-bicycle_116137-6024.jpg?w=2000" type="image/png">
 </head>
 <body>
 	<img alt="error"

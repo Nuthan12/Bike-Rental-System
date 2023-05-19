@@ -83,7 +83,7 @@ body {
 				<tr>
 					<td>Is Available:</td>
 					<td>
-						<%-- <form:checkbox path="available" /> --%> <label
+						 <label
 						for="available">Available:</label> <input type="checkbox"
 						id="available" name="available">
 					</td>

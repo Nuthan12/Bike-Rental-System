@@ -33,14 +33,14 @@ public class BookingDetailsDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public void setBikeAvailableStatusToTrue(int bikeId) {
+	public void setBikeAvailableStatusToFalse(int bikeId) {
 		String sql = "UPDATE BikeDetails SET available = 0 WHERE bikeId = " + bikeId;
 		jdbcTemplate.update(sql);
 	}
 
 	public int bookBike(Booking booking) {
 		String sql = "INSERT INTO BookingDetails (bookingId,custId,bikeId,bookedTime,branchId,returnStatus) VALUES (?, ?, ?, ?, ?,?)";
-		setBikeAvailableStatusToTrue(booking.getBikeId());
+		setBikeAvailableStatusToFalse(booking.getBikeId());
 		System.out.println(bikeDetailsDao.getBranchIdByBikeId(booking.getBikeId()));
 		return jdbcTemplate.update(sql, booking.getBookingId(), booking.getCustId(), booking.getBikeId(),
 				booking.getBookedTime(), bikeDetailsDao.getBranchIdByBikeId(booking.getBikeId()), false);

@@ -7,6 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Customer Registration Page</title>
+<link rel="icon" href="https://img.freepik.com/premium-vector/bike-sharing-rental-service-logo-icon-with-bicycle_116137-6024.jpg?w=2000" type="image/png">
 <script type="text/javascript">
 	function validateForm() {
 		var age = document.getElementById("ageValidation").value;
@@ -37,7 +38,7 @@ td {
 form input[type="text"], form input[type="password"], form input[type="custMail"]
 	{
 	display: block;
-	width: 100%;
+	width: 90%;
 	padding: 8px;
 	margin-bottom: 10px;
 	border: 1px solid #ddd;

@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Revenue</title>
+    <link rel="icon" href="https://img.freepik.com/premium-vector/bike-sharing-rental-service-logo-icon-with-bicycle_116137-6024.jpg?w=2000" type="image/png">
     <style>
         /* CSS styling */
         body {
